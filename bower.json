@@ -1,0 +1,31 @@
+{
+  "name": "flickity-lazyload",
+  "main": "flickity-lazyload.js",
+  "version": "0.1.0",
+  "authors": [
+    "Guillaume Lafarge"
+  ],
+  "description": "Enable lazyLoad option for Flickity",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "flickity",
+    "lazyload"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/glafarge/flickity-lazyload",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "flickity": "0.x",
+    "fizzy-ui-utils": "~0.1.0"
+  }
+}

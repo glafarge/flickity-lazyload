@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width" />
+
+  <title>Lazy loading</title>
+
+  <link rel="stylesheet" href="../bower_components/flickity/css/flickity.css" />
+  <link rel="stylesheet" href="sandbox.css" />
+
+  <style>
+  .image-gallery img {
+    display: block;
+    margin-right: 20px;
+    max-height: 400px;
+    max-width: 100%;
+  }
+  .flickity-loading {
+	opacity:0;
+  }
+  </style>
+
+</head>
+<body>
+
+  <h1>Lazy load</h1>
+  <h2></h2>
+
+  <div id="image-gallery1" class="container image-gallery js-flickity"
+    data-flickity-options='{ "wrapAround": false, "percentPosition": false, "lazyLoad": "ondemand", "cellAlign": "right" }'>
+    <!-- images from unsplash.com -->
+    <img data-lazy="http://i.imgur.com/r8p3Xgq.jpg" />
+    <img data-lazy="http://i.imgur.com/q9zO6tw.jpg" />
+    <img data-lazy="http://i.imgur.com/bwy74ok.jpg" />
+    <img data-lazy="http://i.imgur.com/hODreXI.jpg" />
+    <img data-lazy="http://i.imgur.com/UORFJ3w.jpg" />
+    <img data-lazy="http://i.imgur.com/bAZWoqx.jpg" />
+    <img data-lazy="http://i.imgur.com/PgmEBSB.jpg" />
+    <img data-lazy="http://i.imgur.com/aboaFoB.jpg" />
+    <img data-lazy="http://i.imgur.com/LkmcILl.jpg" />
+  </div>
+
+
+
+<script src="../bower_components/get-style-property/get-style-property.js"></script>
+<script src="../bower_components/get-size/get-size.js"></script>
+<script src="../bower_components/matches-selector/matches-selector.js"></script>
+<script src="../bower_components/eventEmitter/EventEmitter.js"></script>
+<script src="../bower_components/eventie/eventie.js"></script>
+<script src="../bower_components/doc-ready/doc-ready.js"></script>
+<script src="../bower_components/classie/classie.js"></script>
+
+<script src="../bower_components/flickity/js/utils.js"></script>
+<script src="../bower_components/flickity/js/unipointer.js"></script>
+<script src="../bower_components/flickity/js/cell.js"></script>
+<script src="../bower_components/flickity/js/prev-next-button.js"></script>
+<script src="../bower_components/flickity/js/page-dots.js"></script>
+<script src="../bower_components/flickity/js/player.js"></script>
+<script src="../bower_components/flickity/js/drag.js"></script>
+<script src="../bower_components/flickity/js/animate.js"></script>
+<script src="../bower_components/flickity/js/cell-change.js"></script>
+<script src="../bower_components/flickity/js/flickity.js"></script>
+
+<script src="../bower_components/fizzy-ui-utils/utils.js"></script>
+
+<script src="../flickity-lazyload.js"></script>
+
+<script>
+docReady( function() {
+	var gallery = Flickity.data('#image-gallery1');
+	var debug = document.getElementsByTagName('h2')[0];
+		debug.innerHTML = 'Image 1 / ' +gallery.cells.length;
+
+	gallery.on( 'select', function( e ) {
+		debug.innerHTML = 'Image ' + (gallery.selectedIndex+1) + ' / ' +gallery.cells.length;
+	});
+
+});
+</script>
+
+</body>
+</html>

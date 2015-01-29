@@ -1,0 +1,29 @@
+{
+  "name": "flickity-lazyload",
+  "version": "0.1.0",
+  "description": "Enable lazyLoad option for Flickity",
+  "main": "flickity-lazyload.js",
+  "dependencies": {
+    "flickity": "0.x",
+    "fizzy-ui-utils": "^0.1.0",
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/glafarge/flickity-lazyload.git"
+  },
+  "keywords": [
+    "flickity"
+    "lazyload",
+    "browser",
+    "DOM"
+  ],
+  "author": "Guillaume Lafarge",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/glafarge/flickity-lazyload/issues"
+  },
+  "homepage": "https://github.com/glafarge/flickity-lazyload"
+}
