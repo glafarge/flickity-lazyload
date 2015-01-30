@@ -1,7 +1,7 @@
 {
   "name": "flickity-lazyload",
   "main": "flickity-lazyload.js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "authors": [
     "Guillaume Lafarge"
   ],
@@ -22,7 +22,9 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+	"sandbox",
+    "package.json"
   ],
   "dependencies": {
     "flickity": "0.x",

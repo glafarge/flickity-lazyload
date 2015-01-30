@@ -1,6 +1,6 @@
 {
   "name": "flickity-lazyload",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Enable lazyLoad option for Flickity",
   "main": "flickity-lazyload.js",
   "dependencies": {

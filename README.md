@@ -21,4 +21,4 @@ npm: `npm install flickity-lazyload`
 
 ---
 
-By [PRYSME](http://prys.me)
+By [Guillaume Lafarge](http://prys.me)
