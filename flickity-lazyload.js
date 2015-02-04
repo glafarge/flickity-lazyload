@@ -76,6 +76,22 @@
 			_this.cellSizeChange( cellElem );
 		}
 
+		function onImageLoadedProgressive(e) {
+			var img = e.target;
+			eventie.unbind(img, 'load', onImageLoadedProgressive);
+
+			console.log(img.getAttribute('src') + ' loaded !');
+			img.removeAttribute('data-lazy');
+			classie.remove(img, 'flickity-loading');
+
+			// Layout
+			var cell = _this.getCell( img );
+			var cellElem = cell.element || utils.getParent( img, '.flickity-slider > *' );
+			_this.cellSizeChange( cellElem );
+
+			_this.lazyLoad();
+		}
+
 		function loadImages(rangeStart, rangeEnd) {
 			var images = utils.filterFindElements(_this.slider.children);
 				images = images.slice(rangeStart, rangeEnd);
@@ -133,8 +149,17 @@
 		// PROGRESSIVE WAY
 		// ==========================================
 		else if(_this.options.lazyLoad == 'progressive') {
-			// TODO : implement it
-			// see : https://github.com/kenwheeler/slick/blob/master/slick/slick.js#L1267
+			var images = utils.filterFindElements(_this.slider.children, 'img[data-lazy]');
+			if(images.length > 0) {
+				var img = images[0]; // get first child
+				var url = img.getAttribute('data-lazy');
+
+				console.log('loading ' + url + '...');
+
+				eventie.bind(img, 'load', onImageLoadedProgressive);
+
+				img.src = url;
+			}
 		}
 
 	};
