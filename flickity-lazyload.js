@@ -62,10 +62,7 @@
 		}
 		var _this = this;
 
-		function onImageLoaded(e) {
-			var img = e.target;
-			eventie.unbind(img, 'load', onImageLoaded);
-
+		function imageLoaded(img) {
 			console.log(img.getAttribute('src') + ' loaded !');
 			img.removeAttribute('data-lazy');
 			classie.remove(img, 'flickity-loading');
@@ -76,20 +73,30 @@
 			_this.cellSizeChange( cellElem );
 		}
 
+		function onImageLoaded(e) {
+			var img = e.target;
+			eventie.unbind(img, 'load', onImageLoaded);
+			imageLoaded(img);
+		}
+
 		function onImageLoadedProgressive(e) {
 			var img = e.target;
 			eventie.unbind(img, 'load', onImageLoadedProgressive);
-
-			console.log(img.getAttribute('src') + ' loaded !');
-			img.removeAttribute('data-lazy');
-			classie.remove(img, 'flickity-loading');
-
-			// Layout
-			var cell = _this.getCell( img );
-			var cellElem = cell.element || utils.getParent( img, '.flickity-slider > *' );
-			_this.cellSizeChange( cellElem );
+			imageLoaded(img);
 
 			_this.lazyLoad();
+		}
+
+		function loadImage(img, callback) {
+			if(img.hasAttribute('data-lazy')) {
+				var url = img.getAttribute('data-lazy');
+
+				console.log('loading ' + url + '...');
+
+				eventie.bind(img, 'load', callback);
+
+				img.src = url;
+			}
 		}
 
 		function loadImages(rangeStart, rangeEnd) {
@@ -98,15 +105,7 @@
 
 			for ( var i=0, len = images.length; i < len; i++ ) { 
 				var img = images[i];
-				if(img.hasAttribute('data-lazy')) {
-					var url = img.getAttribute('data-lazy');
-
-					console.log('loading ' + url + '...');
-
-					eventie.bind(img, 'load', onImageLoaded);
-
-					img.src = url;
-				}
+				loadImage(img, onImageLoaded);
 			}
 		}
 
@@ -152,13 +151,7 @@
 			var images = utils.filterFindElements(_this.slider.children, 'img[data-lazy]');
 			if(images.length > 0) {
 				var img = images[0]; // get first child
-				var url = img.getAttribute('data-lazy');
-
-				console.log('loading ' + url + '...');
-
-				eventie.bind(img, 'load', onImageLoadedProgressive);
-
-				img.src = url;
+				loadImage(img, onImageLoadedProgressive);
 			}
 		}
 
