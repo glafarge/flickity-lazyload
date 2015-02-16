@@ -40,8 +40,6 @@
 }( window, function factory( window, Flickity, utils ) {
 	'use strict';
 
-	Flickity.previousIndex = null; // Keep it to avoid bad behavior
-
 	Flickity.createMethods.push('_createLazyLoad');
 
 	Flickity.prototype._createLazyLoad = function() {
@@ -52,6 +50,8 @@
 		if ( !this.options.lazyLoad ) {
 			return;
 		}
+
+		this.previousIndex = null; // Keep it to avoid bad behavior
 
 		this.lazyLoad();
 		this.previousIndex = this.selectedIndex;
@@ -70,7 +70,6 @@
 		var _this = this;
 
 		function imageLoaded(img) {
-			console.log(img.getAttribute('src') + ' loaded !');
 			img.removeAttribute('data-lazy');
 			classie.remove(img, 'flickity-loading');
 
@@ -94,9 +93,7 @@
 		function loadImage(img, callback) {
 			if(img.hasAttribute('data-lazy')) {
 				var url = img.getAttribute('data-lazy');
-
-				console.log('loading ' + url + '...');
-
+				
 				eventie.bind(img, 'load', callback);
 
 				img.src = url;
