@@ -4,7 +4,7 @@
   "description": "Enable lazyLoad option for Flickity",
   "main": "flickity-lazyload.js",
   "dependencies": {
-    "flickity": "0.x",
+    "flickity": "0.2.x",
     "fizzy-ui-utils": "^0.1.0"
   },
   "scripts": {
