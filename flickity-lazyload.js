@@ -42,7 +42,17 @@
 
 	Flickity.previousIndex = null; // Keep it to avoid bad behavior
 
-	Flickity.prototype.imagesLoaded = function() {
+	Flickity.createMethods.push('_createLazyLoad');
+
+	Flickity.prototype._createLazyLoad = function() {
+		this.on( 'activate', this.activateLazyLoad );
+	}
+
+	Flickity.prototype.activateLazyLoad = function() {
+		if ( !this.options.lazyLoad ) {
+			return;
+		}
+
 		this.lazyLoad();
 		this.previousIndex = this.selectedIndex;
 
@@ -57,9 +67,6 @@
 	}
 
 	Flickity.prototype.lazyLoad = function() {
-		if ( !this.options.lazyLoad ) {
-			return;
-		}
 		var _this = this;
 
 		function imageLoaded(img) {
