@@ -1,5 +1,5 @@
 /*!
- * Flickity lazyLoad v0.1.2
+ * Flickity lazyLoad v0.1.3
  * enables lazyLoad option for Flickity
  * based on slick approach
  */
