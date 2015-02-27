@@ -63,7 +63,7 @@
 			this.lazyLoad();
 			this.previousIndex = this.selectedIndex;
 		}
-		this.on('select', onSelect);
+		this.on('cellSelect', onSelect);
 	}
 
 	Flickity.prototype.lazyLoad = function() {
