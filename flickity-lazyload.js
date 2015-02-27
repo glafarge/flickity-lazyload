@@ -73,7 +73,8 @@
 			img.removeAttribute('data-lazy');
 			classie.remove(img, 'flickity-loading');
 
-			_this.resize();
+			var cell = _this.getParentCell( img );
+    		_this.cellSizeChange( cell && cell.element );
 		}
 
 		function onImageLoaded(e) {
