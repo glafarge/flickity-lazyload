@@ -1,3 +1,8 @@
+## Deprecated since Flickity v1.1 has been released with [lazyLoad option added](http://flickity.metafizzy.co/options.html#lazyload).
+
+
+
+
 # Flickity lazyload
 
 Enables the `lazyLoad` option for [Flickity](http://flickity.metafizzy.co)
